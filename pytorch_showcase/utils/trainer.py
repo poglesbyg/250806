@@ -94,7 +94,10 @@ class Trainer:
         
         # AMP setup
         if self.use_amp:
-            self.scaler = torch.cuda.amp.GradScaler()
+            if device.type == 'cuda':
+                self.scaler = torch.amp.GradScaler('cuda')
+            else:
+                self.scaler = torch.amp.GradScaler('cpu')
     
     def train_epoch(self, train_loader: DataLoader, 
                    metric_fn: Optional[Callable] = None) -> Tuple[float, Dict[str, float]]:
@@ -113,7 +116,7 @@ class Trainer:
             self.optimizer.zero_grad()
             
             if self.use_amp:
-                with torch.cuda.amp.autocast():
+                with torch.amp.autocast(device_type=self.device.type):
                     output = self.model(data)
                     loss = self.criterion(output, target)
                 
@@ -175,7 +178,7 @@ class Trainer:
                 data, target = data.to(self.device), target.to(self.device)
                 
                 if self.use_amp:
-                    with torch.cuda.amp.autocast():
+                    with torch.amp.autocast(device_type=self.device.type):
                         output = self.model(data)
                         loss = self.criterion(output, target)
                 else:

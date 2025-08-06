@@ -320,7 +320,7 @@ class ModelVisualizer:
         grad_cam = (grad_cam - grad_cam.min()) / (grad_cam.max() - grad_cam.min())
         
         self.remove_hooks()
-        return grad_cam.cpu()
+        return grad_cam.detach().cpu()
     
     def visualize_grad_cam(self, input_tensor: torch.Tensor,
                           target_class: int,
