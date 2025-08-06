@@ -1,0 +1,18 @@
+[
+  {
+    "fileName": "main-overview.mdc",
+    "description": "High-level overview of the CNN implementation for CIFAR-10 classification, including system architecture and component relationships"
+  },
+  {
+    "fileName": "neural-network-architecture.mdc",
+    "description": "Detailed documentation of the CNN architecture, including layers, residual blocks, and network topology with architectural diagrams"
+  },
+  {
+    "fileName": "algorithms-implementations.mdc",
+    "description": "Technical details of key algorithms including ResidualBlock implementation, weight initialization strategies, and feature map extraction"
+  },
+  {
+    "fileName": "data-flow.mdc",
+    "description": "Documentation of data flow through the neural network, including input processing, intermediate feature maps, and output generation"
+  }
+]

@@ -1,0 +1,108 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyTorch
+*.pth
+*.pt
+
+# Data
+data/
+datasets/
+
+# Outputs
+outputs/
+logs/
+checkpoints/
+samples/
+
+# Jupyter
+.ipynb_checkpoints/
+# Uncomment the line below if you don't want to track notebooks
+# *.ipynb
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Weights & Biases
+wandb/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Model files (large)
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# UV lock file (keep this for reproducibility)
+# uv.lock
+
+# PyTorch specific
+*.onnx
+*.torchscript
+
+# Tensorboard logs
+runs/
+tb_logs/
+
+# MLflow
+mlruns/
+
+# Cache directories
+.cache/
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
