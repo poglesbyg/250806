@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import numpy as np
 
-from ..models.transformer import TextClassifier
+from ..models.transformer import create_text_classifier
 from ..utils.data_utils import get_text_loaders, create_sample_text_data
 from ..utils.trainer import Trainer
 from ..utils.metrics import compute_metrics, plot_confusion_matrix, plot_training_curves
@@ -93,7 +93,7 @@ def run_transformer_demo(
     
     # Create model
     print(f"\n🏗️  Creating Transformer model (size: {model_size})...")
-    model = TextClassifier(
+    model = create_text_classifier(
         vocab_size=len(vocab),
         num_classes=3,
         model_size=model_size,

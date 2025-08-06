@@ -567,7 +567,16 @@ def create_model_summary(model: nn.Module, input_size: Tuple[int, ...],
     
     # Make a forward pass
     model.eval()
-    x = torch.randn(1, *input_size).to(device)
+    
+    # Check if this is a text model (has embedding layer) - use integer input
+    embedding_layers = [m for m in model.modules() if isinstance(m, nn.Embedding)]
+    if embedding_layers and len(input_size) == 1:
+        # Text model - use random integers within vocabulary size
+        vocab_size = embedding_layers[0].num_embeddings
+        x = torch.randint(0, vocab_size, (1, *input_size)).to(device)
+    else:
+        # Vision model - use random floats
+        x = torch.randn(1, *input_size).to(device)
     
     with torch.no_grad():
         model(x)
@@ -596,7 +605,7 @@ def create_model_summary(model: nn.Module, input_size: Tuple[int, ...],
         line_str += f"{shape_str:<20} "
         
         num_params = summary[layer]["nb_params"]
-        line_str += f"{num_params:,:<15} "
+        line_str += f"{num_params:,}".ljust(15) + " "
         
         trainable = summary[layer].get("trainable", "N/A")
         line_str += f"{str(trainable):<10}\n"
